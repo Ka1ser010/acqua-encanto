@@ -951,9 +951,20 @@
     <div class="page" id="p4">
       <div class="pix-card">
         <h2>💳 Pix</h2>
-        <img src="teste2_page-0002.jpg"
-          style="width:250px;border-radius:12px;margin:0 auto 16px;display:block">
-        <div class="pix-key">+55 98 8550-7373</div>
+
+          style="width:250  px;border-radius:12px;margin:0 auto 16px;display:block">
+        <div class="pix-key" style="display:flex;align-items:center;justify-content:center;gap:14px;">
+  +55 98 8550-7373
+  <button onclick="copiarChave()" id="btnCopiar" style="
+    font-family:'Montserrat',sans-serif;
+    font-size:11px; font-weight:700;
+    background:rgba(255,255,255,0.15);
+    color:white; border:1px solid rgba(255,255,255,0.3);
+    border-radius:8px; padding:6px 12px; cursor:pointer;
+    transition:all 0.2s; white-space:nowrap;">
+    📋 Copiar
+  </button>
+</div>
         <p class="pix-note">Após o pagamento, favor enviar o comprovante ao número da instituição.</p>
       </div>
       <div class="success" id="successMsg" style="display:none">
@@ -1118,7 +1129,6 @@
         'Assinatura (base64 PNG)': sigData
       };
 
-      // ⬇️ Cole aqui a sua URL do Apps Script
       var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyCkkDAc6XuxYuf5bSBBzlJCTXbzhSOami5hs8z8bqpbJqHgAU7FikYKJ9I8-yaC92Hmw/exec';
 
       try {
@@ -1143,6 +1153,16 @@
         toast('Erro ao enviar. Verifique sua conexão.', true);
       }
     }
+    function copiarChave() {
+  navigator.clipboard.writeText('+55 98 8550-7373');
+  var btn = $('btnCopiar');
+  btn.textContent = '✓ Copiado!';
+  btn.style.background = 'rgba(34,195,122,0.3)';
+  setTimeout(function() {
+    btn.textContent = '📋 Copiar';
+    btn.style.background = 'rgba(255,255,255,0.15)';
+  }, 2000);
+}
   </script>
 </body>
 
